@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your Expenses</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="my-form" action="/add-expense" method="POST">
+        <h2>Enter Expense Here:</h2>
+        <label for="amount" class="form-label">Enter Amount:</label>
+        <input type="number" name="amount" id="amount" class="form-control" required/>
+        <label for="des" class="form-label">Enter Description:</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          class="form-control"
+        />
+        <label for="category" class="form-control">Select Type:</label>
+        <select name="category" id="category" class="form-control">
+          <option value="default" selected>Choose Type</option>
+          <option value="fuel">Fuel</option>
+          <option value="food">Food</option>
+          <option value="movie">Movie</option>
+          <option value="emi">EMI</option>
+          <option value="utility">Utility</option>
+        </select>
+        <br />
+        <input id="btn" type="submit" value="Add Expanse" class="adddata btn"/>
+      </form>
+      <div id="msg"></div>
+      <div>
+      <button id="rzp" class="rzp fgtBtn">Buy Premium</button>
+    </div>
+    <div>
+      <button id="leaderboard" class="fgttBtn"></button>
+    </div>
+    <div>
+      <button class="fgttBtn" onclick="download()" id="downloadexpense"></button>
+    </div>
+    <button id="log">Log Out</button>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      
+      <ul id="details"><h2>Expenses:</h2></ul>
+      <ul id="boards"></ul>
+    <div id="pagination">
+      <div class="input-group mb-3">
+        <select class="form-select" id="dynamicpagination">
+            <option selected>Choose no Of expenses to show</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </div>
+    </div>
+    <div class="container">
+      <ul class="list-group" id="downloadlinks">
+          <h4 id="heading"></h4>
+      </ul>
+    </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/expense.js"></script>
+  </body>
+</html>

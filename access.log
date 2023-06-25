@@ -1,0 +1,5 @@
+::1 - - [25/Jun/2023:08:16:26 +0000] "GET /premium/leaderboard HTTP/1.1" 201 95 "http://localhost:3000/expense/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [25/Jun/2023:08:16:30 +0000] "DELETE /expense/delete-expense/3 HTTP/1.1" 201 7 "http://localhost:3000/expense/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [25/Jun/2023:08:24:29 +0000] "GET /expense/ HTTP/1.1" 304 - "http://localhost:3000/user/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [25/Jun/2023:08:24:30 +0000] "GET /expense/expenses/load-data?page=1&pagesize=null HTTP/1.1" 201 283 "http://localhost:3000/expense/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [25/Jun/2023:08:24:31 +0000] "GET /favicon.ico HTTP/1.1" 500 3391 "http://localhost:3000/expense/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Expense Tracker</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sign-Up Here</h1>
+      <form id="my-form">
+        <div class="msg"></div>
+        <div>
+          <label for="name">Enter Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name here..." required>
+        </div>
+        <div>
+            <label for="email">Enter A Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email here..." required>
+        </div>
+        <div>
+            <label for="password">Create Password:</label>
+            <input type="password" id="password" name="password" pattern="^(?=.*[A-Z])(?=.*\d).+$" placeholder="1 uppercase & 1 number required" required>
+          <div>  
+            <label for="cnfpassword">Confirm Password:</label>
+            <input type="password" id="cnfpassword" name="cnfpassword" placeholder="Enter same password here" required>
+        </div>
+      </div>
+        <input id="submit" type="submit" value="Sign Up" class="btn">
+        <p id="error-message"></p>
+      </form>
+      <p>Existing user? <a href="/user/login">Login</a></p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/signup.js"></script>
+  </body>
+</html>
