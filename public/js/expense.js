@@ -33,6 +33,9 @@ async function addItem(event) {
       { headers: { Authorization: token } }
     );
     showOnScreen(response.data.newexpense);
+    document.getElementById("amount").value='';
+    document.getElementById("description").value='';
+    document.getElementById("category").value='';
   } catch (err) {
     console.log(err);
   }
@@ -191,7 +194,12 @@ window.addEventListener("DOMContentLoaded", async () => {
   try {
     let token = localStorage.getItem("token");
     const decode = parseJwt(token);    
-    console.log(decode);
+    const name = decode.username;
+    const profile = document.createElement('p');
+    profile.textContent=`${name}`;
+    profile.style.fontSize='15px'
+    const logout = document.getElementById('log');
+    logout.appendChild(profile);
   const isAdmin = decode.ispremuimuser;
     if (isAdmin == true) {
       document.querySelector("#rzp").style.visibility = "hidden";

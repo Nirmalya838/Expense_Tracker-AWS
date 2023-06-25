@@ -22,7 +22,10 @@ const User =  sequelize.define('user',{
         type:Sequelize.DataTypes.STRING,
         allowNull:false,
     },
-    ispremuimuser:Sequelize.DataTypes.BOOLEAN,
+    ispremuimuser:{ 
+        type:Sequelize.DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
     totalamount:Sequelize.DataTypes.INTEGER
 })
 

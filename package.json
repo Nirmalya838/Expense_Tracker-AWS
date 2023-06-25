@@ -8,7 +8,7 @@
     "start": "nodemon app.js",
     "start-server": "node app.js"
   },
-  "author": "Abhishek Chahar",
+  "author": "Nirmalya Sengupta",
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",

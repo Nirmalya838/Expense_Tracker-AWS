@@ -20,8 +20,8 @@ exports.postForgetPassword = async (req, res, next) => {
         host: `${process.env.host}`,
         port: 587,
         auth: {
-          user: `${process.env.username}`,
-          pass: `${process.env.password}`,
+          user: `${process.env.user}`,
+          pass: `${process.env.pass}`,
         },
       });
       const msg = {
