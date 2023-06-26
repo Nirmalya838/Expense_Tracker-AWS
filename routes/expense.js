@@ -4,16 +4,16 @@ const authentication = require('../middleware/auth');
 const expenseController = require('../controllers/expense');
 
 
-router.get('/',expenseController.getHomePage);
+router.get('/expense/',expenseController.getHomePage);
 
-router.post('/add-expense',authentication.authenticated,expenseController.postAddExpense);
+router.post('/expense/add-expense',authentication.authenticated,expenseController.postAddExpense);
 
-router.get('/expenses/load-data', authentication.authenticated,expenseController.sendExpenses);
+router.get('/expense/expenses/load-data', authentication.authenticated,expenseController.sendExpenses);
 
-router.get('/download',authentication.authenticated,expenseController.download);
-router.get('/show-downloadLink',authentication.authenticated,expenseController.downloadLinks)
+router.get('/expense/download',authentication.authenticated,expenseController.download);
+router.get('/expense/show-downloadLink',authentication.authenticated,expenseController.downloadLinks)
 
-router.delete('/delete-expense/:id',expenseController.deleteExpense);
+router.delete('/expense/delete-expense/:id',expenseController.deleteExpense);
 
 
 module.exports=router;

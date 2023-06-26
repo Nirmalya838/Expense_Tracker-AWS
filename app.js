@@ -23,11 +23,11 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'),
 
 app.use(morgan('combined', {stream:accessLogStream}));
 
-app.use('/user',userRouter);
-app.use('/expense',expenseRouter);
-app.use('/purchase',purchaseRouter);
-app.use('/premium',premiumRouter);
-app.use('/password',forgetPasswordRouter);
+app.use(userRouter);
+app.use(expenseRouter);
+app.use(purchaseRouter);
+app.use(premiumRouter);
+app.use(forgetPasswordRouter);
 
 User.hasMany(Expense);
 Expense.belongsTo(User);

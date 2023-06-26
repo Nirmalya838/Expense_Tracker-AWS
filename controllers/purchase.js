@@ -22,8 +22,8 @@ exports.purchasepremium =async(req,res,next)=>{
     }
 }
 
-function generateAccessToken(id,ispremuimuser){
-    return jwt.sign({userId:id,ispremuimuser:ispremuimuser},'secretKey');
+function generateAccessToken(id,ispremuimuser,name){
+    return jwt.sign({userId:id,ispremuimuser:ispremuimuser,username:name},'secretKey');
  }
 
 exports.updateOrder = async(req,res,next)=>{

@@ -63,12 +63,14 @@ async function BuyPremium(event) {
           { headers: { Authorization: token } }
         );
         alert("Congratulations! you are Premium Member Now.");
-        document.querySelector(".rzp").style.visibility = "hidden";
+        document.querySelector("#rzp").style.visibility = "hidden";
         document.querySelector("#msg").textContent = "Premium User";
         document.getElementById("leaderboard").textContent = "Leaderboard";
         document.getElementById("downloadexpense").textContent = "Download File";
-        // showDownloadLinks();
-        localStorage.setItem("token", res.data.token);
+        document.getElementById("leaderboard").style.visibility = "visible";
+        document.getElementById("downloadexpense").style.visibility = "visible";
+        // // showDownloadLinks();
+        localStorage.setItem("token", res.data.token);  
       },
     };
 
@@ -88,15 +90,6 @@ async function BuyPremium(event) {
   } catch (err) {
     console.log(err);
   }
-}
-
-
-function togglePremiumFeatures() {
-  document.querySelector("#rzp").style.visibility = "hidden";
-  document.querySelector("#msg").textContent = "You Are Premium User";
-  document.getElementById("leaderboard").textContent = "Leaderboard";
-  document.getElementById("downloadexpense").textContent = "Download File";
-  showDownloadLinks();
 }
 
 async function premiumFeature(event) {

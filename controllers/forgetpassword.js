@@ -16,8 +16,9 @@ exports.postForgetPassword = async (req, res, next) => {
     const user = await User.findOne({ where: { email } });
     if (user) {
       const forgetpasswordcreate = await ForgetPassword.create({ id: uuid.v4(), active: true, userId: user.id });
+     
       const transporter = nodemailer.createTransport({
-        host: `${process.env.host}`,
+        host: 'smtp-relay.sendinblue.com',
         port: 587,
         auth: {
           user: `${process.env.user}`,
@@ -29,7 +30,7 @@ exports.postForgetPassword = async (req, res, next) => {
         to: email,
         subject: "Password Reset",
         text: "and easy to do anywhere, even with Node.js",
-        html: `<a href="/password/resetpassword/${forgetpasswordcreate.id}">Click to Reset Password</a>`,
+        html: `<a href="http://localhost:3000/password/resetpassword/${forgetpasswordcreate.id}">Click to Reset Password</a>`,
       };
       await transporter.sendMail(msg);
       res.status(201).json({ message: "Link to reset password sent to your mail" });
@@ -44,6 +45,7 @@ exports.getResetPassword = async (req, res, next) => {
     const forgetPasswordId = req.params.id;
     const forgetpassword = await ForgetPassword.findByPk(forgetPasswordId);
     if (forgetpassword && forgetpassword.active) {
+      
       await forgetpassword.update({ active: false });
       res.status(200).send(`
         <html>
