@@ -17,6 +17,10 @@ exports.postAddUser = async(req,res,next)=>{
     const password = req.body.password;
 
     try{
+        let existingUser = await User.findOne({ where: { email: email } });
+    if (existingUser) {
+      return res.status(400).json({msg:'Email already exists'});
+    }
         const saltRounds=10;
         bcrypt.hash(password,saltRounds,async(err,hash)=>{
             const result = await User.create({name:name,email:email,password:hash,totalamount:0});

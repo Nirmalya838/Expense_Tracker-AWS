@@ -17,8 +17,7 @@ const User = require('./models/user');
 const Expense = require('./models/expense');
 const Order = require('./models/order');
 const ForgetPassword = require('./models/forgetpassword');
-const FilesDownloaded=require('./models/filesdownloaded');
-const signup = require('./routes/signup');  
+const FilesDownloaded=require('./models/filesdownloaded'); 
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 
@@ -29,8 +28,6 @@ app.use('/expense',expenseRouter);
 app.use('/purchase',purchaseRouter);
 app.use('/premium',premiumRouter);
 app.use('/password',forgetPasswordRouter);
-app.use(signup);
-app.use(User);
 
 User.hasMany(Expense);
 Expense.belongsTo(User);

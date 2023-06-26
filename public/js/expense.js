@@ -53,22 +53,21 @@ async function BuyPremium(event) {
     const options = {
       key: response.data.key_id,
       order_id: response.data.order.id,
-      handler: async function (result) {
+      handler: async function (response) {
         const res = await axios.post(
           "/purchase/updatestatus",
           {
             order_id: options.order_id,
-            payment_id: result.razorpay_payment_id,
+            payment_id: response.razorpay_payment_id,
           },
           { headers: { Authorization: token } }
         );
         alert("Congratulations! you are Premium Member Now.");
-        location.reload();
         document.querySelector(".rzp").style.visibility = "hidden";
         document.querySelector("#msg").textContent = "Premium User";
         document.getElementById("leaderboard").textContent = "Leaderboard";
         document.getElementById("downloadexpense").textContent = "Download File";
-        showDownloadLinks();
+        // showDownloadLinks();
         localStorage.setItem("token", res.data.token);
       },
     };
@@ -89,6 +88,15 @@ async function BuyPremium(event) {
   } catch (err) {
     console.log(err);
   }
+}
+
+
+function togglePremiumFeatures() {
+  document.querySelector("#rzp").style.visibility = "hidden";
+  document.querySelector("#msg").textContent = "You Are Premium User";
+  document.getElementById("leaderboard").textContent = "Leaderboard";
+  document.getElementById("downloadexpense").textContent = "Download File";
+  showDownloadLinks();
 }
 
 async function premiumFeature(event) {

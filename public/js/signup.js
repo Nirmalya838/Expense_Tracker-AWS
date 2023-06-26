@@ -22,7 +22,7 @@ async function AddUser(event) {
       location.reload();
     } catch (err) {
       const errorElement = document.getElementById('error-message');
-      if (err.response.status == 422) {
+      if (err.response.status == 400) {
         errorElement.textContent = "Email already exists!";
       } else {
         errorElement.textContent = "An error occurred. Please try again later.";
