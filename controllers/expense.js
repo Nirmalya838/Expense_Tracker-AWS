@@ -20,11 +20,11 @@ exports.download = async (req, res) => {
     const userId = req.user.id;
     const filename = `expenses${userId}/${new Date()}.txt`;
     const fileUrl = await S3Services.uploadToS3(strinfiyExpenses, filename);
-    // await FilesDownload.create({
-    //   filelink: fileUrl,
-    //   userId,
-    // });
-    res.status(200).json({ fileUrl });
+    await FilesDownload.create({
+      filelink: fileUrl,
+      userId,
+    });
+    res.status(200).json({ fileUrl, success:true });
   } catch (err) {
     res.status(500).json({ fileUrl: "" });
   }

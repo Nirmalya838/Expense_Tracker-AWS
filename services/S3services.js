@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 require('dotenv').config();
 exports.uploadToS3=async(data, filename)=> {
     try {
-      const BUCKET_NAME = "expensetrackerfiles";
+      const BUCKET_NAME = process.env.BUCKET_NAME;  
       const IAM_USER_KEY = process.env.IAM_USER_KEY;
       const IAM_USER_SECRET = process.env.IAM_USER_SECRET;
       let s3bucket = new AWS.S3({

@@ -69,7 +69,7 @@ async function BuyPremium(event) {
         document.getElementById("downloadexpense").textContent = "Download File";
         document.getElementById("leaderboard").style.visibility = "visible";
         document.getElementById("downloadexpense").style.visibility = "visible";
-        // // showDownloadLinks();
+        document.getElementById('downloadshow').style.visibility = "visible";
         localStorage.setItem("token", res.data.token);  
       },
     };
@@ -134,18 +134,7 @@ async function download() {
 }
 
 function showDownloadLinks() {
-  const inputElement = document.createElement("input");
-  inputElement.type = "button";
-  inputElement.value = "Show Download File Link";
-  inputElement.id = "downloadfile-btn";
-  inputElement.style.backgroundColor = "gold";
-  inputElement.style.color = "black";
-  inputElement.style.borderRadius = "15px";
-  inputElement.style.padding = "8px";
-  inputElement.style.marginLeft = "100px";
-  const header = document.getElementById("main-header");
-  header.appendChild(inputElement);
-
+  const inputElement = document.getElementById('downloadshow')
   inputElement.onclick = async () => {
     const heading = document.getElementById("heading");
     heading.innerText = "Show Download Url";
@@ -207,12 +196,13 @@ window.addEventListener("DOMContentLoaded", async () => {
       document.querySelector("#msg").textContent = "You Are Premium User";
       document.getElementById("leaderboard").textContent = "Leaderboard";
       document.getElementById("downloadexpense").textContent = "Download File";
-      // showDownloadLinks();
+      document.getElementById('downloadshow').style.visibility = "visible";
     }
     else {
       document.querySelector("#msg").textContent = "Become a Premium User Now!!!";
       document.getElementById("leaderboard").style.visibility = "hidden";
       document.getElementById("downloadexpense").style.visibility = "hidden";
+      document.getElementById('downloadshow').style.visibility = "hidden";
     }
     const page = 1;
     let pagesize = localStorage.getItem("pagesize");
