@@ -18,11 +18,11 @@ exports.postForgetPassword = async (req, res, next) => {
       const forgetpasswordcreate = await ForgetPassword.create({ id: uuid.v4(), active: true, userId: user.id });
      
       const transporter = nodemailer.createTransport({
-        host: 'smtp-relay.sendinblue.com',
+        host: process.env.BREVO_HOST,
         port: 587,
         auth: {
-          user: `${process.env.user}`,
-          pass: `${process.env.pass}`,
+          user: `${process.env.USER}`,
+          pass: `${process.env.PASS}`,
         },
       });
       const msg = {

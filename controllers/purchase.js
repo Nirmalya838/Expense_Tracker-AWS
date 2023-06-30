@@ -7,8 +7,8 @@ require('dotenv').config();
 exports.purchasepremium =async(req,res,next)=>{
     try{
         let rzp = new Razorpay({
-            key_id:`${process.env.rzpkey}`,
-            key_secret:`${process.env.rzpsecretkey}`
+            key_id: process.env.RZP_KEY,
+            key_secret: process.env.RZP_SECRET_KEY
         })
         const amount=9900;
         const order =await rzp.orders.create({amount,currency:"INR"});
