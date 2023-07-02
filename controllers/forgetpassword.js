@@ -30,7 +30,7 @@ exports.postForgetPassword = async (req, res, next) => {
         to: email,
         subject: "Password Reset",
         text: "and easy to do anywhere, even with Node.js",
-        html: `<a href="http://13.48.237.70:80/password/resetpassword/${forgetpasswordcreate.id}">Click to Reset Password</a>`,
+        html: `<a href="http://localhost:3000/password/resetpassword/${forgetpasswordcreate.id}">Click to Reset Password</a>`,
       };
       await transporter.sendMail(msg);
       res.status(201).json({ message: "Link to reset password sent to your mail" });
@@ -49,7 +49,7 @@ exports.getResetPassword = async (req, res, next) => {
       await forgetpassword.update({ active: false });
       res.status(200).send(`
         <html>
-          <form action="http://13.48.237.70:80/password/updatepassword/${forgetPasswordId}" method="get">
+          <form action="/password/updatepassword/${forgetPasswordId}" method="get">
             <label for="newpassword">Enter New password</label>
             <input name="newpassword" type="password" required></input>
             <button>Reset Password</button>

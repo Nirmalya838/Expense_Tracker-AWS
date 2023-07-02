@@ -10,7 +10,7 @@ async function forgetPassword(e){
         email:email
     }
     try{
-        const response =await axios.post("http://13.48.237.70:80/password/forgetpassword",obj);
+        const response =await axios.post("http://localhost:3000/password/forgetpassword",obj);
         console.log(response.data.message);
     }
     catch(err){
