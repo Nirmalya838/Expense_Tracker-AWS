@@ -17,7 +17,7 @@ const User = require('./models/user');
 const Expense = require('./models/expense');
 const Order = require('./models/order');
 const ForgetPassword = require('./models/forgetpassword');
-const FilesDownloaded=require('./models/filesdownloaded'); 
+const FilesDownloaded=require('./models/filesdownloaded');
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 

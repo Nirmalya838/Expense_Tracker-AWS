@@ -21,8 +21,8 @@ exports.postForgetPassword = async (req, res, next) => {
         host: process.env.BREVO_HOST,
         port: 587,
         auth: {
-          user: `${process.env.USER}`,
-          pass: `${process.env.PASS}`,
+          user: process.env.USER,
+          pass: process.env.PASS,
         },
       });
       const msg = {
