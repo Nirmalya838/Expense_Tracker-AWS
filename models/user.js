@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-
+const Group = require('./group');
 const sequelize = require('../util/database');
 
 const User =  sequelize.define('user',{
@@ -18,15 +18,15 @@ const User =  sequelize.define('user',{
         allowNull:false,
         unique:true
     },
+    phone:{
+        type:Sequelize.DataTypes.BIGINT,
+        allowNull:false,
+        unique:true
+    },
     password:{
         type:Sequelize.DataTypes.STRING,
         allowNull:false,
-    },
-    ispremuimuser:{ 
-        type:Sequelize.DataTypes.BOOLEAN,
-        defaultValue: false,
-    },
-    totalamount:Sequelize.DataTypes.INTEGER
+    }
 })
 
 module.exports = User;

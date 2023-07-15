@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Chat Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>Chat App</h1>
+        </div>
+        <ul id="userlist"></ul>
+        <div>
+          <h3>Your Groups:</h3>
+          <ul id="grouplist"></ul>
+        </div>
+        <div class="chat-messages">
+            <div>
+                <h2>All Messages:</h2>
+                <ul id="message-list"></ul>
+              </div>
+        </div>
+        <div class="chat-form-container">
+            <form id="chat-form">
+                <input type="text" id="msg" placeholder="enter message" autocomplete="off" name="message" required>
+                <button class="btn" id="add-chat">send</button>
+            </form>
+        </div>
+    </div>
+    <button id="topLeftButton">Create Group</button>
+
+    <div id="popup" class="popup">
+        <span class="close" id="close">&times;</span>
+      <form>
+        <div class="form-group">
+          <label for="name">Group Name:</label>
+          <input type="text" id="group_name" name="group_name" placeholder="Enter Group Name" required>
+        </div>
+        <div class="form-group">
+            <label for="checkbox">Checkbox:</label>
+            <div name="participants" id="checkboxOptions"></div>
+          </div>
+        <button class="btn" id="submit">Create</button>
+      </form>
+    </div>
+    <button id="log" class="leave">Leave Chat</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/chat.js"></script>
+    <script src="/group.js"></script>
+</body>
+
+</html>

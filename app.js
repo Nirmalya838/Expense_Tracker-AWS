@@ -1,45 +1,38 @@
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
+
+
 const app = express();
-const morgan = require('morgan');
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")))
 
+app.use(cors({origin: 'http://127.0.0.1:3000',
+methods: ['GET', 'POST']}));
 
-const sequelize = require('./util/database');
-const userRouter = require('./routes/user');
-const expenseRouter = require('./routes/expense');
-const purchaseRouter = require('./routes/purchase');
-const premiumRouter = require('./routes/premium');
-const forgetPasswordRouter = require('./routes/forgetpassword');
 const User = require('./models/user');
-const Expense = require('./models/expense');
-const Order = require('./models/order');
-const ForgetPassword = require('./models/forgetpassword');
-const FilesDownloaded=require('./models/filesdownloaded');
+const Message = require('./models/message');
+const Group = require('./models/group');
+const GroupUser = require('./models/groupUser');
+const sequelize = require('./util/database');
+const signupRouter = require('./routes/signupRoute');
+const loginRouter = require('./routes/loginRoute');
+const chatRouter = require('./routes/chatRoute');
+const groupRouter = require('./routes/groupRoute');
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
+app.use(signupRouter);
+app.use(loginRouter);
+app.use(chatRouter);
+app.use(groupRouter);
 
-app.use(morgan('combined', {stream:accessLogStream}));
+User.hasMany(Message);
+Message.belongsTo(User);
 
-app.use(userRouter);
-app.use(expenseRouter);
-app.use(purchaseRouter);
-app.use(premiumRouter);
-app.use(forgetPasswordRouter);
+Group.hasMany(Message);
+Message.belongsTo(Group);
 
-User.hasMany(Expense);
-Expense.belongsTo(User);
-
-User.hasMany(Order);
-Order.belongsTo(User);
-
-User.hasMany(ForgetPassword);
-ForgetPassword.belongsTo(User);
-
-User.hasMany(FilesDownloaded);
-FilesDownloaded.belongsTo(User);
+Group.belongsToMany(User, { through: 'GroupUser' });
+User.belongsToMany(Group, { through: 'GroupUser' });
 
 sequelize.sync()
 .then(result=>{
